@@ -11,6 +11,7 @@
   "dependencies": {
     "async": "^3.2.2",
     "cookie-parser": "^1.4.6",
+    "mongoose": "^6.0.14",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-validator": "^6.13.0",
@@ -18,8 +19,5 @@
     "luxon": "^2.1.1",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11"
-  },
-  "devDependencies": {
-    "mongoose": "^6.0.14"
   }
 }
