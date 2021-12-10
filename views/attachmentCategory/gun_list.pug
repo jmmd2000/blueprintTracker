@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1= title
+  
+  ul
+    each gun in gun_list
+      li 
+        a(href=gun.url) #{gun.title} 
+        br
+        |  #{gun.description}
+
+    else
+      li There are no guns.

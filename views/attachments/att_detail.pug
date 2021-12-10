@@ -1,0 +1,97 @@
+extends ../layout
+
+block content
+  // For the "blueprints that use" table
+  // relWC is an array of weapon classes
+  // WC is relWC without duplicates.
+  // Needed this as the table ended up like this:
+  // __________________________________________
+  //| Assault Rifles | Blueprint1, Blueprint 2 |
+  //| Assault Rifles | Blueprint1, Blueprint 2 |
+  //| Sniper Rifles  | Blueprint3, Blueprint 4 |
+  // -------------------------------------------
+
+
+  - var relWC_G = []
+    each bp in blueprints 
+      - relWC_G.push(bp.weaponClass.toString())
+
+  - var relWC_B = []
+    each gun in guns 
+      - relWC_B.push(gun.weaponClass.toString())
+
+  - function onlyUnique(value, index, self) {
+  - return self.indexOf(value) === index;
+  - }
+
+  - var WC = relWC_B.filter(onlyUnique);
+  - var WC1 = relWC_G.filter(onlyUnique);
+
+  h1(class="pageHeader") #{att.title}
+  
+  
+  div
+    h3 Attachment Info
+    
+      h5(class="subtitle") #[strong Attachment Category :]
+      each a in att.attachmentCategory
+       h6(class="subtitle")
+        a(href=a.url)  #{a.title}
+
+      h5(class="subtitle") #[strong Compatible Guns:] 
+
+      if guns.length > 0
+        p(class="subtitle") There are #{guns.length} guns that are compatible with this attachment
+      else
+        p(class="subtitle") There are no applicable guns
+
+      div(class='flexContainer')
+      table(class="attListTable")
+        each wc in wcs
+          each w in WC1
+            if wc._id.toString() == w.toString()
+              div(class='flexItem')
+                tr
+                  td
+                    a(href=wc.url) #{wc.title}
+                  td
+
+                    each gun in guns
+                      if wc._id.toString() == gun.weaponClass.toString()
+                        a(href=gun.url style="display:inline;") #{gun.title}, 
+
+
+
+
+
+      h5(class="subtitle") #[strong Blueprints that use #{att.title}:]
+
+      if blueprints.length == 1
+        p(class="subtitle") There is 1 blueprint that uses this attachment
+      else if blueprints.length > 0
+        p(class="subtitle") There are #{blueprints.length} blueprints that use this attachment
+      else
+        p(class="subtitle") There are no applicable blueprints
+
+      div(class='flexContainer')
+      table(class="attListTable")
+        each wc in wcs
+          each w in WC
+            if wc._id.toString() == w.toString()
+              div(class='flexItem')
+                tr
+                  td
+                    a(href=wc.url) #{wc.title}
+                  td
+
+                    each bp in blueprints
+                      if wc._id.toString() == bp.weaponClass.toString()
+                        a(href=bp.url style="display:inline;") #{bp.title}, 
+      
+  hr
+  p
+    a(href=att.url+'/delete') Delete Attachment 
+      i(class="fas fa-times" style="color: red;")
+  p
+    a(href=att.url+'/update') Update Attachment 
+      i(class="fas fa-edit" style="color: orange;")

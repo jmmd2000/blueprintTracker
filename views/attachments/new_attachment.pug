@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  if att
+    h1(class="pageHeader")=title +": "+ att.title
+  else
+    h1(class="pageHeader")=title
+
+  form(method='POST' action='')
+
+    // Attachment Name
+    div.form-group
+      label(for='att_name') Attachment Name:
+      input#att_name.form-control(type='text', placeholder='Name of attachment...' name='att_name' required='true' value=(undefined===att ? '' : att.title) )
+
+    // Category
+    div.form-group
+      for cats in attcats
+          p #{cats.game.title}
+      label(for='att_cat') Attachment Category:
+      select#att_cat.form-control(type='select', placeholder='Select category...' name='att_cat' required='true' )
+        for cats in attcats
+                if att
+                  for atc in att.attachmentCategory
+                    for game in games
+                      if cats.game._id.toString() == game._id.toString()
+                        option(value=cats._id selected=(cats._id.toString()===atc._id.toString() ? 'selected' : false) ) #{cats.title} - #{game.title}
+                else
+                    for game in games
+                      if cats.game._id.toString() == game._id.toString()
+                        option(value=cats._id) #{cats.title} - #{game.title}
+
+    button.btn.btn-secondary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

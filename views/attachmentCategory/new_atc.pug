@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  if wc
+    h1(class="pageHeader")=title +": "+ wc.title
+  else
+    h1(class="pageHeader")=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='atc_name') Category Name:
+      input#atc_name.form-control(type='text', placeholder='Name of category...' name='atc_name' required='true' value=(undefined===atc ? '' : atc.title) )
+    div.form-group
+      label(for='game_name') Game:
+      select#game_name.form-control(type='select', placeholder='Select game...' name='game_name' required='true' )
+        for g in games
+              if atc
+                  option(value=g._id selected=(atc.game._id.toString()===atc.game._id.toString() ? 'selected' : false) ) #{g.title}
+              else
+                  option(value=g._id) #{g.title}
+    button.btn.btn-secondary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

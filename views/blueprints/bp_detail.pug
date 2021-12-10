@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader") #{bp.title}
+  img(src='/images/'+bp.weaponBase.image)
+  
+  p #[strong Description:   ] #{bp.description}
+  
+    h2 Blueprint Info
+
+    h5(class="subtitle") Base Weapon: 
+      a(href=bp.weaponBase.url) #{bp.weaponBase.title}
+
+    h5(class="subtitle") Weapon Class: 
+      a(href=bp.weaponClass.url) #{bp.weaponClass.title}
+
+  h5(class="subtitle") Attachments
+  
+  table(class="bpAttachment_table")  
+      each att in bp.attachments
+        each cat in attcats
+          if cat._id.toString() == att.attachmentCategory.toString()
+            tr
+              td 
+                a(href=cat.url) #{cat.title}
+              td
+                a(href=att.url) #{att.title}
+
+  hr
+  p
+    a(href=bp.url+'/delete') Delete Blueprint 
+      i(class="fas fa-times" style="color: red;")
+  p
+    a(href="/tracker/guns/" + bp.weaponBase._id + "/blueprint/" + bp._id + "/update") Update Blueprint 
+      i(class="fas fa-edit" style="color: orange;")
+          
+              

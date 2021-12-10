@@ -1,0 +1,54 @@
+extends ../layout
+
+
+block content
+  - var length = wepclasses.length + attcats.length;
+  h1(class="pageHeader") #{title}: #{game.title}
+
+  if length
+  
+     p #[strong Delete the following before attempting to delete this game.]
+  
+     li #[strong Guns:] 
+         ul
+           each gun in guns
+              if gun.weaponClass.game.toString() == game._id.toString()
+                li
+                  a(href=gun.url) #{gun.title}
+
+     li #[strong Blueprints:] 
+         ul
+           each gun in blueprints
+              if gun.weaponClass.game.toString() == game._id.toString()
+                li
+                  a(href=gun.url) #{gun.title}
+
+     li #[strong Attachments:] 
+         ul
+           each a in atts
+            -var x = a.attachmentCategory.toString()
+              if x.includes(game._id.toString())
+                li
+                  a(href=a.url) #{a.title}     
+    
+     li #[strong Attachment Categories:] 
+         ul
+           each gun in attcats
+             li
+               a(href=gun.url) #{gun.title}
+    
+     li #[strong Weapon Classes:] 
+         ul
+           each gun in wepclasses
+             li
+               a(href=gun.url) #{gun.title}
+  
+
+  else
+     p Do you really want to delete this attachment?
+    
+     form(method='POST' action='')
+       div.form-group
+         input#id.form-control(type='hidden',name='id', required='true', value=game._id)
+
+       button.btn.btn-secondary(type='submit') Delete

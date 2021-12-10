@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+  div(class='flexContainer')
+    each game in games
+      div(class='gameItem' style="text-align:center")
+        p
+          a(href=game.url) #{game.title}
+    else
+      p There are no games.
+                  
+
+          

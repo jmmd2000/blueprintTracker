@@ -1,0 +1,60 @@
+extends ../layout
+
+block content
+
+  h1(class="pageHeader") #{gun.title}
+  img(src='/images/'+gun.image)
+  
+  p #[strong Summary:] #{gun.description}
+  
+  div
+    h4 Blueprints using the #{gun.title}
+    //- p #{}
+    div(class='flexContainer')
+    
+    table(class="bpTable") 
+      tr
+        th(class="bpTable_heading") Blueprint Name
+        th(class="bpTable_heading") Description
+
+      each blueprint in guns_blueprints
+        tr 
+          td 
+            a(href=blueprint.url) #{blueprint.title}
+          td #{blueprint.description}
+      else
+        tr
+          td(style="width: 100%;" colspan="2") There are no created blueprints with this gun.
+      tr
+          td(style="width: 100%;" colspan="2") 
+            a(href=gun.url+"/createBlueprint") Create a blueprint using the #{gun.title}.
+
+  h4 Compatible attachments for the #{gun.title}
+
+  if gun.compatible.length > 0
+    p(class="subtitle") There are #{gun.compatible.length} compatible attachments
+  else
+    p(class="subtitle") There are no compatible attachments
+
+  div(class='flexContainer')
+      table(class="attListTable")
+        each cat in attcats
+          if cat.game.toString() == gun.weaponClass.game.toString()
+            div(class='flexItem')
+              tr
+                td
+                  a(href=cat.url) #{cat.title}
+                td
+                    each att in gun.compatible
+                      if cat._id.toString() == att.attachmentCategory.toString()
+                        a(href=att.url style="display:inline;") #{att.title}, 
+                    else
+                      span There are no compatible attachments
+  
+  hr
+  p
+    a(href=gun.url+'/delete') Delete Gun 
+      i(class="fas fa-times" style="color: red;")
+  p
+    a(href="/tracker/game/" + gun.weaponClass.game + "/guns/" + gun._id + "/update") Update Gun 
+      i(class="fas fa-edit" style="color: orange;")

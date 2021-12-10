@@ -1,0 +1,79 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader") #{game.title}
+
+    // List of guns in the current game
+    h3(class="subtitle") #[strong Guns:] 
+    each c in wepclasses
+        if c.game._id.toString() == game._id.toString()
+          table(class="gunTable")
+            tr
+              th(colspan="2" class="bpTable_name") 
+                h4
+                  a(href=c.url) #{c.title}
+            tr
+              th(class="bpTable_heading") Weapon Name
+              th(class="bpTable_heading") Description
+
+            each gun in guns
+              if c._id.toString() == gun.weaponClass.toString()
+                tr 
+                  td 
+                    a(href=gun.url) #{gun.title}
+                  td #{gun.description}
+
+    br
+    hr
+    br
+
+    // List of blueprints in the current game
+    h3(class="subtitle") #[strong Blueprints:] 
+    each c in wepclasses
+        if c.game._id.toString() == game._id.toString()
+          table(class="bpTable")
+            tr
+              th(colspan="3" class="bpTable_name") 
+                h4
+                  a(href=c.url) #{c.title}
+            tr
+              th(class="bpTable_heading") Blueprint Name
+              th(class="bpTable_heading") Base Weapon
+              th(class="bpTable_heading") Description
+
+            each gun in guns
+              if c._id.toString() == gun.weaponClass.toString()
+                each bp in blueprints
+                    if bp.weaponBase._id.toString() == gun._id.toString()
+                      tr 
+                        td 
+                          a(href=bp.url) #{bp.title}
+                        td 
+                          a(href=gun.url) #{gun.title}
+                        td #{bp.description}
+
+    br
+    hr
+    br
+
+    // List of attachments in the current game
+    h3(class="subtitle") #[strong Attachments:] 
+    div(class='flexContainer')
+      table(class="attListTable")
+        each cat in attcats
+          if cat.game.toString() == game._id.toString()
+            div(class='flexItem')
+              tr
+                td
+                  a(href=cat.url) #{cat.title}
+                td
+                    each a in att
+                      if cat._id.toString() == a.attachmentCategory.toString()
+                        a(href=a.url style="display:inline;") #{a.title}, 
+  hr
+  p
+    a(href=game._id+'/delete') Delete Game 
+      i(class="fas fa-times" style="color: red;")
+  p
+    a(href=game.url+'/update') Update Game 
+      i(class="fas fa-edit" style="color: orange;")

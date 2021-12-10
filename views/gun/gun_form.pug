@@ -1,0 +1,66 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+  form(method='POST' action='')
+
+    // Gun Name
+    div.form-group
+      label(for='gun_name') Gun Name:
+      input#gun_name.form-control(type='text', placeholder='Name of gun...' name='gun_name' required='true' value=(undefined===gun ? '' : gun.title) )
+
+    // Gun Description
+    div.form-group
+      label(for='gun_des') Gun Description:
+      input#gun_des.form-control(type='text', placeholder='Description...' name='gun_des' required='false' value=(undefined===gun ? '' : gun.description) )
+
+    // Weapon Class
+    div.form-group
+      label(for='gun_class') Weapon Class:
+      select#gun_class.form-control(type='select', placeholder='Select weapon class...' name='gun_class' required='true' )
+          for wc in wcs
+            if gun
+              if wc.game._id.toString() == game._id.toString()
+                option(value=wc._id selected=(wc._id.toString()===gun.weaponClass._id.toString() ? 'selected' : false) ) #{wc.title}
+            else
+              if wc.game._id.toString() == game._id.toString()
+                option(value=wc._id) #{wc.title}
+
+    h4 Compatible Attachments
+
+    div.form-group(class="checkboxContainer")
+      each cat in cats
+        if cat.game._id.toString() == game._id.toString()
+          label(class="checkboxTitle") #{cat.title}
+            div(class="checkboxes")
+           
+              each att in atts
+
+                if cat._id.toString() == att.attachmentCategory.toString()
+                  // if this form is accessed thru "Update", fill in the attachments that have been selected before
+                
+                  div(style='display: inline; padding-right:10px;')
+                    if gun
+                      - if(gun.compatible.includes(att.toString()))
+                        input.checkbox-input(type='checkbox', name="compatible", id=att._id, value=att._id, checked)
+                        label(for=att._id class="checkboxLabel") #{att.title}
+                      - else
+                        input.checkbox-input(type='checkbox', name="compatible", id=att._id, value=att._id)
+                        label(for=att._id class="checkboxLabel") #{att.title}
+                    else
+                      input.checkbox-input(type='checkbox', name="compatible", id=att._id, value=att._id)
+                      label(for=att._id class="checkboxLabel") #{att.title}
+
+    // Gun Description
+    div.form-group
+      label(for='gun_img') Gun Image filename:
+      input#gun_img.form-control(type='text', placeholder='Image title...' name='gun_img' required='true' value=(undefined===gun ? '' : gun.image) )
+
+
+    button.btn.btn-secondary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

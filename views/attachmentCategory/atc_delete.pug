@@ -1,0 +1,29 @@
+extends ../layout
+
+
+block content
+  h1(class="pageHeader") #{title}: #{atc.title}
+  
+  if atts.length
+  
+    p #[strong Delete or update the following attachments before attempting to delete this attachment category.]
+  
+    h5(class="subtitle") #[strong Attachments:] 
+      table(class="bpTable" style="width: 20%") 
+        each att in atts
+          tr 
+            td 
+              a(href=att.url) #{att.title}
+        else
+          tr
+            td(style="width: 100%;") There are no attachments in this category.
+
+
+  else
+    p Do you really want to delete this attachment?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=atc._id )
+
+      button.btn.btn-secondary(type='submit') Delete

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 #{gun.title}
+  
+  p #[strong Summary:] #{gun.description}
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Blueprints
+    
+    ul
+    each blueprint in guns_blueprints
+      li 
+        a(href=blueprint.url) #{blueprint.title} 
+        br
+        |  #{blueprint.description}
+ 
+    else
+      p There are no created blueprints with this gun.
+      
+//-   hr
+//-   p
+//-     a(href=book.url+'/delete') Delete Book
+//-   p
+//-     a(href=book.url+'/update') Update Book

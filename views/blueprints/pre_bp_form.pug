@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+    h4 Which gun would you like to create a blueprint for?
+    br
+    each game in games
+
+         h2(class="subtitle" style="margin-top: 2rem") #{game.title}
+         div
+            each c in wcs
+                -var x = c.toString()
+                    if x.includes(game._id.toString())
+                        table(class="gunTable")
+                            tr
+                                th(colspan="2" class="bpTable_name") 
+                                    h4
+                                        a(href=c.url) #{c.title}
+                            tr
+                                th(class="bpTable_heading") Weapon Name
+                                th(class="bpTable_heading") Description
+                            each gun in guns
+                              if c._id.toString() == gun.weaponClass.toString()
+                                tr 
+                                    td 
+                                        a(href=gun.url + "/createBlueprint") #{gun.title}
+                                    td #{gun.description}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

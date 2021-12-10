@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+  each game in games
+
+    h2(class="subtitle" style="margin-top: 2rem") #{game.title}
+
+    div
+
+      each c in weaponClasses
+        if c.game._id.toString() == game._id.toString()
+          table(class="gunTable")
+            tr
+              th(colspan="2" class="bpTable_name") 
+                h4
+                  a(href=c.url) #{c.title}
+            tr
+              th(class="bpTable_heading") Weapon Name
+              th(class="bpTable_heading") Description
+
+            each gun in guns
+              if c._id.toString() == gun.weaponClass.toString()
+                tr 
+                  td 
+                    a(href=gun.url) #{gun.title}
+                  td #{gun.description}
+
+            else
+              p There are no guns within this weapon class.
+      else
+        p There are no guns in this game yet.
+    hr
+    br
+    br

@@ -1,0 +1,40 @@
+extends ../layout
+
+
+block content
+ - var length = guns.length + blueprints.length;
+  h1(class="pageHeader") #{title}: #{att.title}
+  
+  if length
+  
+    p #[strong Delete or update the following guns/blueprints before attempting to delete this attachment.]
+  
+    h5(class="subtitle") #[strong Compatible Guns:] 
+      table(class="bpTable" style="width: 20%") 
+        each gun in guns
+          tr 
+            td 
+              a(href=gun.url) #{gun.title}
+        else
+          tr
+            td(style="width: 100%;") There are no guns that are compatible this attachment.
+
+    h5(class="subtitle") #[strong Blueprints that use #{att.title}:]
+
+      table(class="bpTable" style="width: 20%") 
+        each bp in blueprints
+          tr 
+            td 
+              a(href=bp.url) #{bp.title}
+        else
+          tr
+            td(style="width: 100%;") There are no blueprints that use this attachment.
+
+  else
+    p Do you really want to delete this attachment?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=att._id )
+
+      button.btn.btn-secondary(type='submit') Delete

@@ -1,0 +1,313 @@
+:root {
+    --fontColor: rgb(207, 203, 203);
+    --darkAccent: rgb(49, 49, 49);
+    --medAccent: rgb(90, 90, 90);
+    --lightAccent: rgb(167, 167, 167);
+    --bodyBackground: rgb(75, 75, 75);
+}
+
+* {
+    color: var(--fontColor);
+}
+
+a {
+    color:rgb(147, 176, 255)
+}
+
+body {
+    background-color: var(--bodyBackground);
+}
+
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar {
+    background-color: var(--darkAccent);
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
+
+.sidebar-nav li {
+    font: 1.5em;
+}
+
+.pageHeader {
+    padding: .5em 0 .5em 0;
+    color: var(--fontColor);
+    text-decoration: underline;
+}
+
+.subtitle {
+    margin-top: .5em;
+    padding: .25em;
+}
+
+.form-control,
+.form-control:focus,
+.form-control::placeholder,
+.form-control:disabled {
+    background-color: var(--darkAccent);
+    color: white;
+}
+
+.form-control:disabled{
+    background-color: var(--medAccent);
+    color: white;
+}
+
+option {
+    background-color: var(--darkAccent);
+    color: white;
+}
+
+.checkboxContainer {
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    flex-wrap: wrap;
+}
+
+.checkboxes {
+    margin: .5rem;
+}
+
+.checkboxContainer,
+.checkboxLabel {
+    margin: .25rem;
+}
+
+.checkboxTitle {
+    border: 1px solid black;
+    margin: .25rem;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.gameItem{
+    width: 20%;
+    padding: 1rem;
+    margin: .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid var(--medAccent);
+    background-color: var(--darkAccent);
+    text-align: center;
+}
+
+
+
+
+
+/*  
+/*  
+/* STYLES FOR GUN LIST PAGE 
+/*  
+*/
+
+.gunTable {
+    width: 100%;
+    margin-top: 1rem;
+    border: .5px solid black;
+}
+
+.gunTable th {
+    height: 50px;
+    padding: .5em;
+    border-bottom: .5px solid black;
+    background-color: var(--darkAccent);
+    text-align: center;
+}
+
+.gunTable td {
+    height: 40px;
+    border-bottom: .5px solid black;
+    font-size: 1rem;
+}
+
+.gunTable td:nth-child(1) {
+    width: 15%;
+    text-align: center;
+}
+
+.gunTable tr:nth-child(even) {
+    background-color: var(--medAccent);
+}
+
+.gunTable_name {
+    text-align: center;
+}
+
+.gunTable_heading {
+    text-align: left;
+    text-decoration: underline;
+}
+
+
+/*  
+/*  
+/* STYLES FOR BLUEPRINT LIST PAGE 
+/*  
+*/
+
+
+.bpTable {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: .5px solid black;
+}
+
+.bpTable th {
+    height: 50px;
+    padding: .5em;
+    border-bottom: .5px solid black;
+    background-color: var(--darkAccent);
+    text-align: center;
+}
+
+.bpTable td {
+    height: 40px;
+    border-bottom: .5px solid black;
+    font-size: 1rem;
+}
+
+.bpTable td:nth-child(1) {
+    width: 15%;
+    text-align: center;
+}
+
+.bpTable td:nth-child(2) {
+    width: 15%;
+    text-align: center;
+}
+
+.bpTable tr:nth-child(even) {
+    background-color: var(--medAccent);
+}
+
+.bpTable_name {
+    text-align: center;
+}
+
+.bpTable_heading {
+    text-align: left;
+    text-decoration: underline;
+}
+
+/*  
+/*  
+/* STYLES FOR BLUEPRINT DETAIL PAGE 
+/*  
+*/
+
+.bpAttachment_table {
+    width: 50%;
+    margin: 1rem;
+    border: 1px solid black;
+    border-style: none;
+    /* border-collapse: collapse; */
+}
+
+.bpAttachment_table td {
+    border: .5px solid black;
+    padding: .25rem;
+    text-align: center;
+}
+
+.bpAttachment_table tr:nth-child(even) {
+    background-color: var(--medAccent);
+}
+
+
+
+
+.attListTable {
+    width: 100%;
+    border: 1px solid black;
+    border-style: none;
+    /* border-collapse: collapse; */
+}
+
+.attListTable td {
+    border: .5px solid black;
+    padding: .25rem;
+    /* text-align: center; */
+}
+
+.attListTable td:nth-child(odd) {
+    background-color: var(--darkAccent);
+    width: 10%;
+}
+
+
+.attListTable tr:nth-child(even) {
+    background-color: var(--medAccent);
+}
+
+
+
+
+
+.flexContainer {
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.flexItem {
+    width: 100%;
+    /* margin: 10px;
+    padding: 10px; */
+    /* border: 1px solid black; */
+}
+
+img {
+    width: 30%;
+    height: auto;
+    padding: .5em 0 .5em 0;
+}
+
+
+
+
+
+@media (max-width: 768px) { 
+
+    .sidebar {
+        background-color: var(--darkAccent);
+        height: 70vh;
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    .sidebar-nav {
+        position: relative;
+        height: 30vh;
+    }
+
+    .sidebar-nav li{
+        /* background-color: red; */
+        padding: .1rem;
+    }
+
+    .gameItem{
+        width: 30%;
+        padding: .5rem;
+    }
+
+    .flexContainer {
+        justify-content: center;
+    }
+
+}

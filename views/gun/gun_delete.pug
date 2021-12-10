@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+
+  h1(class="pageHeader") #{title}: #{gun.title}
+
+  
+  if blueprints.length
+  
+    p #[strong Delete or update the following blueprints before attempting to delete this gun.]
+  
+        // List of blueprints in the current game
+    h3(class="subtitle") #[strong Blueprints:] 
+    each c in wepclasses
+        if c._id.toString() == gun.weaponClass._id.toString()
+          table(class="bpTable")
+            tr
+              th(colspan="3" class="bpTable_name") 
+                h4
+                  a(href=c.url) #{c.title}
+            tr
+              th(class="bpTable_heading") Blueprint Name
+              th(class="bpTable_heading") Base Weapon
+              th(class="bpTable_heading") Description
+
+                each bp in blueprints
+                    if bp.weaponBase._id.toString() == gun._id.toString()
+                      tr 
+                        td 
+                          a(href=bp.url) #{bp.title}
+                        td 
+                          a(href=gun.url) #{gun.title}
+                        td #{bp.description}
+
+  else
+    p Do you really want to delete this gun?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=gun._id )
+
+      button.btn.btn-secondary(type='submit') Delete

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1(class="pageHeader")= title
+  h5(class="subtitle") Welcome to #[em Blueprint Tracker]
+  h6 This tool allows you to create and manage custom blueprints from #[em Call of Duty] games
+  br
+  p There are currently #{data.game_count} games being tracked with a total of #{data.blueprint_count} blueprints based on #{data.gun_count} different weapons and #{data.att_count} different attachments

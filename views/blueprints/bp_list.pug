@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+  each game in games
+
+    h2(class="subtitle") #{game.title}
+
+    div
+
+      each c in weaponClasses
+        if c.game._id.toString() == game._id.toString()
+          table(class="bpTable")
+            tr
+              th(colspan="3" class="bpTable_name") 
+                h4
+                  a(href=c.url) #{c.title}
+            tr
+              th(class="bpTable_heading") Blueprint Name
+              th(class="bpTable_heading") Base Weapon
+              th(class="bpTable_heading") Description
+
+            each gun in guns
+              if c._id.toString() == gun.weaponClass.toString()
+                each bp in bps
+                    if bp.weaponBase._id.toString() == gun._id.toString()
+                      tr 
+                        td 
+                          a(href=bp.url) #{bp.title}
+                        td 
+                          a(href=gun.url) #{gun.title}
+                        td #{bp.description}
+
+
+    hr
+    br
+    br

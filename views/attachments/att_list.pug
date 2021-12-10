@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+  each game in games
+
+    h2(class="subtitle" style="margin-top: 2rem") #{game.title}
+
+    div(class='flexContainer')
+      table(class="attListTable")
+        each cat in categories
+          if cat.game._id.toString() == game._id.toString()
+            div(class='flexItem')
+              tr
+                td
+                  a(href=cat.url) #{cat.title}
+                td
+                    each att in attachments
+                      if cat._id.toString() == att.attachmentCategory.toString()
+                        a(href=att.url style="display:inline;") #{att.title}, 
+    hr
+    br
+    br
+                        
+      //-           else
+      //-             li There are no attachments in this category.
+      //- else
+      //-   p There are no attachments.
+
+
+
+
+   

@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader") #{atc.title}
+  
+  div
+    h4 Attachments
+    
+    h6(class="subtitle") There are #{atts.length} attachments in this category
+    ul
+    each att in atts
+      li 
+        a(href=att.url) #{att.title} 
+ 
+    else
+      p There are no attachments within this category.
+      
+  hr
+  p
+    a(href=atc.url+'/delete') Delete Attachment Category 
+      i(class="fas fa-times" style="color: red;")
+  p
+    a(href=atc.url+'/update') Update Attachment Category 
+      i(class="fas fa-edit" style="color: orange;")

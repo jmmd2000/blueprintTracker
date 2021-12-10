@@ -1,0 +1,13 @@
+extends ../layout
+
+
+block content
+  h1(class="pageHeader") #{title}: #{bp.title}
+  
+  h4 Do you really want to delete this blueprint?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=bp._id )
+
+      button.btn.btn-secondary(type='submit') Delete

@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+    h4 Which game would you like to create a gun for?
+    br
+    div(class="flexContainer")
+      each game in games
+        div(class="gameItem")
+            a(href="/tracker/" + game.url + "/gun/create") #{game.title}
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
