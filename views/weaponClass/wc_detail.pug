@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1(class="pageHeader") #{wc.title}
+  h1(class="pageHeader") !{wc.title}
   
   
     h4 Weapon Class Info
@@ -17,8 +17,8 @@ block content
               if wc._id.toString() == gun.weaponClass.toString()
                 tr 
                   td 
-                    a(href=gun.url) #{gun.title}
-                  td #{gun.description}
+                    a(href=gun.url) !{gun.title}
+                  td !{gun.description}
     else
       p(class="subtitle") There are no applicable guns
 

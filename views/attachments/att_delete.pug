@@ -3,7 +3,7 @@ extends ../layout
 
 block content
  - var length = guns.length + blueprints.length;
-  h1(class="pageHeader") #{title}: #{att.title}
+  h1(class="pageHeader") !{title}: !{att.title}
   
   if length
   
@@ -14,18 +14,18 @@ block content
         each gun in guns
           tr 
             td 
-              a(href=gun.url) #{gun.title}
+              a(href=gun.url) !{gun.title}
         else
           tr
             td(style="width: 100%;") There are no guns that are compatible this attachment.
 
-    h5(class="subtitle") #[strong Blueprints that use #{att.title}:]
+    h5(class="subtitle") #[strong Blueprints that use !{att.title}:]
 
       table(class="bpTable" style="width: 20%") 
         each bp in blueprints
           tr 
             td 
-              a(href=bp.url) #{bp.title}
+              a(href=bp.url) !{bp.title}
         else
           tr
             td(style="width: 100%;") There are no blueprints that use this attachment.

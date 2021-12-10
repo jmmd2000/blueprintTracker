@@ -5,7 +5,7 @@ block content
 
   each game in games
 
-    h2(class="subtitle" style="margin-top: 2rem") #{game.title}
+    h2(class="subtitle" style="margin-top: 2rem") !{game.title}
 
     div
 
@@ -15,7 +15,7 @@ block content
             tr
               th(colspan="2" class="bpTable_name") 
                 h4
-                  a(href=c.url) #{c.title}
+                  a(href=c.url) !{c.title}
             tr
               th(class="bpTable_heading") Weapon Name
               th(class="bpTable_heading") Description
@@ -24,8 +24,8 @@ block content
               if c._id.toString() == gun.weaponClass.toString()
                 tr 
                   td 
-                    a(href=gun.url) #{gun.title}
-                  td #{gun.description}
+                    a(href=gun.url) !{gun.title}
+                  td !{gun.description}
 
             else
               p There are no guns within this weapon class.

@@ -3,7 +3,7 @@ extends ../layout
 
 block content
   - var length = wepclasses.length + attcats.length;
-  h1(class="pageHeader") #{title}: #{game.title}
+  h1(class="pageHeader") !{title}: !{game.title}
 
   if length
   
@@ -14,14 +14,14 @@ block content
            each gun in guns
               if gun.weaponClass.game.toString() == game._id.toString()
                 li
-                  a(href=gun.url) #{gun.title}
+                  a(href=gun.url) !{gun.title}
 
      li #[strong Blueprints:] 
          ul
            each gun in blueprints
               if gun.weaponClass.game.toString() == game._id.toString()
                 li
-                  a(href=gun.url) #{gun.title}
+                  a(href=gun.url) !{gun.title}
 
      li #[strong Attachments:] 
          ul
@@ -29,19 +29,19 @@ block content
             -var x = a.attachmentCategory.toString()
               if x.includes(game._id.toString())
                 li
-                  a(href=a.url) #{a.title}     
+                  a(href=a.url) !{a.title}     
     
      li #[strong Attachment Categories:] 
          ul
            each gun in attcats
              li
-               a(href=gun.url) #{gun.title}
+               a(href=gun.url) !{gun.title}
     
      li #[strong Weapon Classes:] 
          ul
            each gun in wepclasses
              li
-               a(href=gun.url) #{gun.title}
+               a(href=gun.url) !{gun.title}
   
 
   else

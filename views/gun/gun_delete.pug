@@ -2,7 +2,7 @@ extends ../layout
 
 block content
 
-  h1(class="pageHeader") #{title}: #{gun.title}
+  h1(class="pageHeader") !{title}: !{gun.title}
 
   
   if blueprints.length
@@ -17,7 +17,7 @@ block content
             tr
               th(colspan="3" class="bpTable_name") 
                 h4
-                  a(href=c.url) #{c.title}
+                  a(href=c.url) !{c.title}
             tr
               th(class="bpTable_heading") Blueprint Name
               th(class="bpTable_heading") Base Weapon
@@ -27,10 +27,10 @@ block content
                     if bp.weaponBase._id.toString() == gun._id.toString()
                       tr 
                         td 
-                          a(href=bp.url) #{bp.title}
+                          a(href=bp.url) !{bp.title}
                         td 
-                          a(href=gun.url) #{gun.title}
-                        td #{bp.description}
+                          a(href=gun.url) !{gun.title}
+                        td !{bp.description}
 
   else
     p Do you really want to delete this gun?

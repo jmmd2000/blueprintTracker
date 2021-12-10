@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1(class="pageHeader") #{bp.title}
+  h1(class="pageHeader") !{bp.title}
   img(src='/images/'+bp.weaponBase.image)
   
   p #[strong Description:   ] #{bp.description}
@@ -9,10 +9,10 @@ block content
     h2 Blueprint Info
 
     h5(class="subtitle") Base Weapon: 
-      a(href=bp.weaponBase.url) #{bp.weaponBase.title}
+      a(href=bp.weaponBase.url) !{bp.weaponBase.title}
 
     h5(class="subtitle") Weapon Class: 
-      a(href=bp.weaponClass.url) #{bp.weaponClass.title}
+      a(href=bp.weaponClass.url) !{bp.weaponClass.title}
 
   h5(class="subtitle") Attachments
   
@@ -22,9 +22,9 @@ block content
           if cat._id.toString() == att.attachmentCategory.toString()
             tr
               td 
-                a(href=cat.url) #{cat.title}
+                a(href=cat.url) !{cat.title}
               td
-                a(href=att.url) #{att.title}
+                a(href=att.url) !{att.title}
 
   hr
   p

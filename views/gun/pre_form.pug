@@ -8,7 +8,7 @@ block content
     div(class="flexContainer")
       each game in games
         div(class="gameItem")
-            a(href="/tracker/" + game.url + "/gun/create") #{game.title}
+            a(href="/tracker/" + game.url + "/gun/create") !{game.title}
 
   if errors 
     ul

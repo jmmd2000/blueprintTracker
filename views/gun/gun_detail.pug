@@ -2,13 +2,13 @@ extends ../layout
 
 block content
 
-  h1(class="pageHeader") #{gun.title}
+  h1(class="pageHeader") !{gun.title}
   img(src='/images/'+gun.image)
   
   p #[strong Summary:] #{gun.description}
   
   div
-    h4 Blueprints using the #{gun.title}
+    h4 Blueprints using the !{gun.title}
     //- p #{}
     div(class='flexContainer')
     
@@ -20,16 +20,16 @@ block content
       each blueprint in guns_blueprints
         tr 
           td 
-            a(href=blueprint.url) #{blueprint.title}
+            a(href=blueprint.url) !{blueprint.title}
           td #{blueprint.description}
       else
         tr
           td(style="width: 100%;" colspan="2") There are no created blueprints with this gun.
       tr
           td(style="width: 100%;" colspan="2") 
-            a(href=gun.url+"/createBlueprint") Create a blueprint using the #{gun.title}.
+            a(href=gun.url+"/createBlueprint") Create a blueprint using the !{gun.title}.
 
-  h4 Compatible attachments for the #{gun.title}
+  h4 Compatible attachments for the !{gun.title}
 
   if gun.compatible.length > 0
     p(class="subtitle") There are #{gun.compatible.length} compatible attachments
@@ -43,11 +43,11 @@ block content
             div(class='flexItem')
               tr
                 td
-                  a(href=cat.url) #{cat.title}
+                  a(href=cat.url) !{cat.title}
                 td
                     each att in gun.compatible
                       if cat._id.toString() == att.attachmentCategory.toString()
-                        a(href=att.url style="display:inline;") #{att.title}, 
+                        a(href=att.url style="display:inline;") !{att.title}, 
                     else
                       span There are no compatible attachments
   

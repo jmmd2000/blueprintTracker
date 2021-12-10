@@ -5,7 +5,7 @@ block content
 
   each game in games
 
-    h2(class="subtitle" style="margin-top: 2rem") #{game.title}
+    h2(class="subtitle" style="margin-top: 2rem") !{game.title}
 
     div(class='flexContainer')
       table(class="attListTable")
@@ -14,11 +14,11 @@ block content
             div(class='flexItem')
               tr
                 td
-                  a(href=cat.url) #{cat.title}
+                  a(href=cat.url) !{cat.title}
                 td
                     each att in attachments
                       if cat._id.toString() == att.attachmentCategory.toString()
-                        a(href=att.url style="display:inline;") #{att.title}, 
+                        a(href=att.url style="display:inline;") !{att.title}, 
     hr
     br
     br

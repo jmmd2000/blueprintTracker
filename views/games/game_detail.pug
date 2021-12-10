@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1(class="pageHeader") #{game.title}
+  h1(class="pageHeader") !{game.title}
 
     // List of guns in the current game
     h3(class="subtitle") #[strong Guns:] 
@@ -11,7 +11,7 @@ block content
             tr
               th(colspan="2" class="bpTable_name") 
                 h4
-                  a(href=c.url) #{c.title}
+                  a(href=c.url) !{c.title}
             tr
               th(class="bpTable_heading") Weapon Name
               th(class="bpTable_heading") Description
@@ -20,8 +20,8 @@ block content
               if c._id.toString() == gun.weaponClass.toString()
                 tr 
                   td 
-                    a(href=gun.url) #{gun.title}
-                  td #{gun.description}
+                    a(href=gun.url) !{gun.title}
+                  td !{gun.description}
 
     br
     hr
@@ -35,7 +35,7 @@ block content
             tr
               th(colspan="3" class="bpTable_name") 
                 h4
-                  a(href=c.url) #{c.title}
+                  a(href=c.url) !{c.title}
             tr
               th(class="bpTable_heading") Blueprint Name
               th(class="bpTable_heading") Base Weapon
@@ -47,10 +47,10 @@ block content
                     if bp.weaponBase._id.toString() == gun._id.toString()
                       tr 
                         td 
-                          a(href=bp.url) #{bp.title}
+                          a(href=bp.url) !{bp.title}
                         td 
-                          a(href=gun.url) #{gun.title}
-                        td #{bp.description}
+                          a(href=gun.url) !{gun.title}
+                        td !{bp.description}
 
     br
     hr
@@ -65,11 +65,11 @@ block content
             div(class='flexItem')
               tr
                 td
-                  a(href=cat.url) #{cat.title}
+                  a(href=cat.url) !{cat.title}
                 td
                     each a in att
                       if cat._id.toString() == a.attachmentCategory.toString()
-                        a(href=a.url style="display:inline;") #{a.title}, 
+                        a(href=a.url style="display:inline;") !{a.title}, 
   hr
   p
     a(href=game._id+'/delete') Delete Game 

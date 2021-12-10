@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   if wc
-    h1(class="pageHeader")=title +": "+ wc.title
+    h1(class="pageHeader")=title +": "+ !{wc.title}
   else
     h1(class="pageHeader")=title
 
@@ -19,9 +19,9 @@ block content
       select#game_name.form-control(type='select', placeholder='Select game' name='game_name' required='true' )
         for g in games
               if wc
-                  option(value=g._id selected=(wc.game._id.toString()===wc.game._id.toString() ? 'selected' : false) ) #{g.title}
+                  option(value=g._id selected=(wc.game._id.toString()===wc.game._id.toString() ? 'selected' : false) ) !{g.title}
               else
-                  option(value=g._id) #{g.title}
+                  option(value=g._id) !{g.title}
 
 
     button.btn.btn-secondary(type='submit') Submit

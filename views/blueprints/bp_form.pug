@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   h1(class="pageHeader")= title
-  h3(class="subtitle") #{gun.title}
+  h3(class="subtitle") !{gun.title}
 
   form(method='POST' action='')
 
@@ -20,13 +20,13 @@ block content
     div.form-group
       label(for='bp_base') Weapon Base:
       select#bp_base.form-control(type='select', placeholder='Select weapon class...' name='bp_base' required='true')
-        option(value=gun._id selected) #{gun.title}
+        option(value=gun._id selected) !{gun.title}
 
     // Weapon Base
     div.form-group
       label(for='bp_wc') Weapon Base:
       select#bp_wc.form-control(type='select', placeholder='Select weapon class...' name='bp_wc' required='true')
-        option(value=gun.weaponClass._id selected) #{gun.weaponClass.title}
+        option(value=gun.weaponClass._id selected) !{gun.weaponClass.title}
 
 
     h4 Attachments
@@ -34,7 +34,7 @@ block content
     div.form-group(class="checkboxContainer")
       each cat in cats
         if cat.game._id.toString() == gun.weaponClass.game._id.toString()
-          label(class="checkboxTitle") #{cat.title}
+          label(class="checkboxTitle") !{cat.title}
             div(class="checkboxes")
            
               for att in gun.compatible
@@ -45,13 +45,13 @@ block content
                     if bp
                       - if(bp.attachments.includes(att.toString()))
                         input.checkbox-input(type='checkbox', name="attachments", id=att._id, value=att._id, checked)
-                        label(for=att._id class="checkboxLabel") #{att.title}
+                        label(for=att._id class="checkboxLabel") !{att.title}
                       - else
                         input.checkbox-input(type='checkbox', name="attachments", id=att._id, value=att._id)
-                        label(for=att._id class="checkboxLabel") #{att.title}
+                        label(for=att._id class="checkboxLabel") !{att.title}
                     else
                       input.checkbox-input(type='checkbox', name="attachments", id=att._id, value=att._id)
-                      label(for=att._id class="checkboxLabel") #{att.title}
+                      label(for=att._id class="checkboxLabel") !{att.title}
 
     br
     button.btn.btn-secondary(type='submit') Submit

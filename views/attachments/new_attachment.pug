@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   if att
-    h1(class="pageHeader")=title +": "+ att.title
+    h1(class="pageHeader")=title +": "+ !{att.title}
   else
     h1(class="pageHeader")=title
 
@@ -16,7 +16,7 @@ block content
     // Category
     div.form-group
       for cats in attcats
-          p #{cats.game.title}
+          p !{cats.game.title}
       label(for='att_cat') Attachment Category:
       select#att_cat.form-control(type='select', placeholder='Select category...' name='att_cat' required='true' )
         for cats in attcats
@@ -24,11 +24,11 @@ block content
                   for atc in att.attachmentCategory
                     for game in games
                       if cats.game._id.toString() == game._id.toString()
-                        option(value=cats._id selected=(cats._id.toString()===atc._id.toString() ? 'selected' : false) ) #{cats.title} - #{game.title}
+                        option(value=cats._id selected=(cats._id.toString()===atc._id.toString() ? 'selected' : false) ) !{cats.title} - !{game.title}
                 else
                     for game in games
                       if cats.game._id.toString() == game._id.toString()
-                        option(value=cats._id) #{cats.title} - #{game.title}
+                        option(value=cats._id) !{cats.title} - !{game.title}
 
     button.btn.btn-secondary(type='submit') Submit
 
