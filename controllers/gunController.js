@@ -161,11 +161,11 @@ exports.gun_create_get = function (req, res, next) {
 exports.gun_create_post = [
     // Attachments
     (req, res, next) => {
-        if (!(req.body.attachments instanceof Array)) {
-            if (typeof req.body.attachments === 'undefined')
-                req.body.attachments = [];
+        if (!(req.body.compatible instanceof Array)) {
+            if (typeof req.body.compatible === 'undefined')
+                req.body.compatible = [];
             else
-                req.body.attachments = new Array(req.body.attachments);
+                req.body.compatible = new Array(req.body.compatible);
         }
         next();
     },
@@ -177,7 +177,7 @@ exports.gun_create_post = [
     body('gun_class', 'Class must not be empty.').trim().isLength({
         min: 1
     }).escape(),
-    body('attachments.*').escape(),
+    body('compatible.*').escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
 
@@ -191,7 +191,7 @@ exports.gun_create_post = [
             description: req.body.gun_des,
             weaponClass: req.body.gun_class,
             image: req.body.gun_img,
-            compatible: req.body.attachments,
+            compatible: req.body.compatible,
         });
 
         if (!errors.isEmpty()) {
