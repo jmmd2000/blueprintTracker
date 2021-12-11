@@ -46,12 +46,12 @@ block content
       else
         p(class="subtitle") There are no applicable guns
 
-        div(class='flexContainer')
+        
           table(class="attListTable")
             each wc in wcs
               each w in WC1
                 if wc._id.toString() == w.toString()
-                  div(class='flexItem')
+                  
                     tr
                       td
                         a(href=wc.url) !{wc.title}
