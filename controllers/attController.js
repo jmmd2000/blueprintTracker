@@ -15,9 +15,6 @@ exports.att_list = function (req, res, next) {
   async.parallel({
       categories: function (callback) {
         AttCat.find()
-          .sort([
-            ["title", "ascending"]
-          ])
           .exec(callback);
       },
 
