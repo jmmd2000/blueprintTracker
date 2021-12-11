@@ -40,7 +40,7 @@ block content
 
       h5(class="subtitle") #[strong Compatible Guns:] 
 
-      
+      if guns.length > 0
         p(class="subtitle") There are #{guns.length} guns that are compatible with this attachment
         div(class='flexContainer')
           table(class="attListTable")
@@ -56,8 +56,8 @@ block content
                         each gun in guns
                           if wc._id.toString() == gun.weaponClass.toString()
                             a(href=gun.url style="display:inline;") !{gun.title},
-      //- else
-      //-   p(class="subtitle") There are no applicable guns
+      else
+        p(class="subtitle") There are no applicable guns
  
 
 
@@ -66,24 +66,7 @@ block content
 
       h5(class="subtitle") #[strong Blueprints that use !{att.title}:]
 
-      if blueprints.length == 1
-        p(class="subtitle") There is 1 blueprint that uses this attachment
-        div(class='flexContainer')
-          table(class="attListTable")
-            ach wc in wcs
-              each w in WC
-                if wc._id.toString() == w.toString()
-                  div(class='flexItem')
-                    tr
-                      td
-                        a(href=wc.url) !{wc.title}
-                      td
-
-                        each bp in blueprints
-                          if wc._id.toString() == bp.weaponClass.toString()
-                            a(href=bp.url style="display:inline;") !{bp.title},
-
-      else if blueprints.length > 0
+      if blueprints.length > 0
         p(class="subtitle") There are #{blueprints.length} blueprints that use this attachment
         div(class='flexContainer')
           table(class="attListTable")
