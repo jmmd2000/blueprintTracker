@@ -47,18 +47,20 @@ block content
         p(class="subtitle") There are no applicable guns
 
         
-      table
-        each wc in wcs
-          
-                  
-                tr
-                  td
-                    a(href=wc.url) !{wc.title}
-                  td
+      div(class='flexContainer')
+          table(class="attListTable")
+            each wc in wcs
+              each w in WC1
+                if wc._id.toString() == w.toString()
+                  div(class='flexItem')
+                    tr
+                      td
+                        a(href=wc.url) !{wc.title}
+                      td
 
-                    each gun in guns
-                      if wc._id.toString() == gun.weaponClass.toString()
-                        a(href=gun.url style="display:inline;") !{gun.title},
+                        each gun in guns
+                          if wc._id.toString() == gun.weaponClass.toString()
+                            a(href=gun.url style="display:inline;") !{gun.title},
  
 
 
@@ -69,7 +71,11 @@ block content
 
       if blueprints.length > 0
         p(class="subtitle") There are #{blueprints.length} blueprints that use this attachment
-        div(class='flexContainer')
+        
+      else
+        p(class="subtitle") There are no applicable blueprints
+
+      div(class='flexContainer')
           table(class="attListTable")
             ach wc in wcs
               each w in WC
@@ -83,8 +89,6 @@ block content
                         each bp in blueprints
                           if wc._id.toString() == bp.weaponClass.toString()
                             a(href=bp.url style="display:inline;") !{bp.title},
-      else
-        p(class="subtitle") There are no applicable blueprints
  
       
   hr
