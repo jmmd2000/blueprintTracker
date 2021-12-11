@@ -42,6 +42,10 @@ block content
 
       if guns.length > 0
         p(class="subtitle") There are #{guns.length} guns that are compatible with this attachment
+        
+      else
+        p(class="subtitle") There are no applicable guns
+
         div(class='flexContainer')
           table(class="attListTable")
             each wc in wcs
@@ -56,8 +60,6 @@ block content
                         each gun in guns
                           if wc._id.toString() == gun.weaponClass.toString()
                             a(href=gun.url style="display:inline;") !{gun.title},
-      else
-        p(class="subtitle") There are no applicable guns
  
 
 
