@@ -24,7 +24,7 @@ exports.att_list = function (req, res, next) {
       attachments: function (callback) {
         Att.find()
           .sort([
-            ["attachmentCategory", "ascending"]
+            ["title", "ascending"]
           ])
           .exec(callback);
       },
