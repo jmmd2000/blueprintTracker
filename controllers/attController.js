@@ -84,9 +84,6 @@ exports.att_detail = function (req, res, next) {
 
       wcs: function (callback) {
         WepClass.find()
-          .sort([
-            ['title', 'ascending']
-          ])
           .exec(callback)
       },
 
