@@ -290,7 +290,9 @@ exports.gun_update_get = function (req, res, next) {
         WepClass.find(callback);
       },
       atts: function (callback) {
-        Att.find(callback);
+        Att.find()
+          .sort([["title", "ascending"]])
+          .exec(callback);
       },
       cats: function (callback) {
         AttCat.find(callback);
