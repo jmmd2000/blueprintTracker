@@ -47,19 +47,19 @@ block content
         p(class="subtitle") There are no applicable guns
 
         
-        table(class="attListTable")
-          each wc in wcs
-            each w in WC1
-              if wc._id.toString() == w.toString()
+      table
+        each wc in wcs
+          each w in WC1
+            if wc._id.toString() == w.toString()
                   
-                  tr
-                    td
-                      a(href=wc.url) !{wc.title}
-                    td
+                tr
+                  td
+                    a(href=wc.url) !{wc.title}
+                  td
 
-                      each gun in guns
-                        if wc._id.toString() == gun.weaponClass.toString()
-                          a(href=gun.url style="display:inline;") !{gun.title},
+                    each gun in guns
+                      if wc._id.toString() == gun.weaponClass.toString()
+                        a(href=gun.url style="display:inline;") !{gun.title},
  
 
 
