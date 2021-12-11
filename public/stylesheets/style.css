@@ -70,7 +70,7 @@ option {
 
 .checkboxContainer {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: top;
     flex-wrap: wrap;
 }
