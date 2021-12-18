@@ -33,10 +33,8 @@ block content
 
   if gun.compatible.length > 0
     p(class="subtitle") There are #{gun.compatible.length} compatible attachments
-  else
-    p(class="subtitle") There are no compatible attachments
 
-  div(class='flexContainer')
+    div(class='flexContainer')
       table(class="attListTable")
         each cat in attcats
           if cat.game.toString() == gun.weaponClass.game.toString()
@@ -59,7 +57,12 @@ block content
                     td
                       each att in gun.compatible
                         if cat._id.toString() == att.attachmentCategory.toString()
-                          a(href=att.url style="display:inline;") !{att.title}, 
+                          a(href=att.url style="display:inline;") !{att.title},
+                          
+  else
+    p(class="subtitle") There are no compatible attachments
+
+   
   
   hr
   p
