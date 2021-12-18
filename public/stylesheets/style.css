@@ -37,17 +37,26 @@ body {
 
 .sidebar-nav li {
   font: 1.5em;
+
+
+  color: #D40B13;
 }
 
 .pageHeader {
   padding: 0.5em 0 0.5em 0;
-  color: var(--fontColor);
+  /* color: var(--fontColor); */
   text-decoration: underline;
+
+
+  color: #D40B13;
 }
 
 .subtitle {
   margin-top: 0.5em;
   padding: 0.25em;
+
+
+  color: #D40B13;
 }
 
 .form-control,
@@ -232,6 +241,8 @@ option {
   border: 0.5px solid black;
   padding: 0.25rem;
   /* text-align: center; */
+
+  color: #D40B13;
 }
 
 .attListTable td:nth-child(odd) {
