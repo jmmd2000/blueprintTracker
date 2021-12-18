@@ -14,7 +14,7 @@ block content
             div(class='flexItem')
               tr
                 td
-                  a(href=cat.url) !{cat.title}
+                  a(href=cat.url class="tableHeader") !{cat.title}
                 td
                     each att in attachments
                       if cat._id.toString() == att.attachmentCategory.toString()

@@ -349,6 +349,10 @@ img {
   background-color: var(--medAccent);
 }
 
+.tableHeader{
+  color: yellow;
+}
+
 
 
 @media (max-width: 768px) {
