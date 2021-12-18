@@ -365,6 +365,14 @@ img {
   color: yellow;
 }
 
+.whiteBold{
+  color: white;
+  font-weight: bold;
+}
+
+.yellow{
+  color:yellow;
+}
 
 
 @media (max-width: 768px) {
