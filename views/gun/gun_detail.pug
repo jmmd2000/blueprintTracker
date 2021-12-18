@@ -40,16 +40,26 @@ block content
       table(class="attListTable")
         each cat in attcats
           if cat.game.toString() == gun.weaponClass.game.toString()
-            div(class='flexItem')
-              tr
-                td
-                  a(href=cat.url) !{cat.title}
-                td
-                    each att in gun.compatible
-                      if cat._id.toString() == att.attachmentCategory.toString()
-                        a(href=att.url style="display:inline;") !{att.title}, 
-                    else
-                      span There are no compatible attachments
+            if gun.primary == true
+              if cat.secondary == false
+                div(class='flexItem')
+                  tr
+                    td
+                      a(href=cat.url) !{cat.title}
+                    td
+                      each att in gun.compatible
+                        if cat._id.toString() == att.attachmentCategory.toString()
+                          a(href=att.url style="display:inline;") !{att.title}, 
+            else
+              if cat.secondary == true
+                div(class='flexItem')
+                  tr
+                    td
+                      a(href=cat.url) !{cat.title}
+                    td
+                      each att in gun.compatible
+                        if cat._id.toString() == att.attachmentCategory.toString()
+                          a(href=att.url style="display:inline;") !{att.title}, 
   
   hr
   p

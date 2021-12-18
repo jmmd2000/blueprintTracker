@@ -37,6 +37,10 @@ var BlueprintSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'Attachment'
   }],
+  warzone: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 // Virtual for this gun instance URL.

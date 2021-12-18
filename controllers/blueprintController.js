@@ -56,6 +56,33 @@ exports.index = function (req, res) {
   );
 };
 
+
+
+exports.search = function (req, res, next) {
+  async.parallel(
+    {
+      guns: function (callback) {
+        Gun.find({'title' : new RegExp(req.params.query, 'i')}).exec(callback);
+      },
+      blueprints: function (callback) {
+        Blueprint.find({'title' : new RegExp(req.params.query, 'i')}).exec(callback);
+      },
+      atts: function (callback) {
+        Att.find({'title' : new RegExp(req.params.query, 'i')}).exec(callback);
+      },
+    },
+    function (err, results) {
+      res.render("search/results.pug", {
+        title: "Search Results: " + req.params.query,
+        error: err,
+        guns: results.guns,
+        blueprints: results.blueprints,
+        atts: results.atts,
+      });
+    }
+  );
+};
+
 // Display list of all Blueprints.
 exports.bp_list = function (req, res, next) {
   async.parallel(
@@ -109,6 +136,7 @@ exports.bp_detail = function (req, res, next) {
           .populate("weaponBase")
           .populate("weaponClass")
           .populate("attachments")
+          .populate("warzone")
           .exec(callback);
       },
       attcats: function (callback) {
@@ -238,6 +266,7 @@ exports.bp_create_post = [
       weaponBase: req.body.bp_base,
       weaponClass: req.body.bp_wc,
       attachments: req.body.attachments,
+      warzone: req.body.wz
     });
 
     if (!errors.isEmpty()) {
@@ -370,6 +399,7 @@ exports.bp_update_get = function (req, res, next) {
           .populate("weaponBase")
           .populate("weaponClass")
           .populate("attachments")
+          .populate("warzone")
           .exec(callback);
       },
       gun: function (callback) {
@@ -456,6 +486,7 @@ exports.bp_update_post = [
       weaponClass: req.body.bp_wc,
       attachments:
         typeof req.body.attachments === "undefined" ? [] : req.body.attachments,
+      warzone: req.body.wz,
       _id: req.params.id,
     });
 

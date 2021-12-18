@@ -6,8 +6,7 @@ block content
   div(class='flexContainer')
     each game in games
       div(class='gameItem' style="text-align:center")
-        p
-          a(href=game.url) !{game.title}
+        a(href=game.url) !{game.title}
     else
       p There are no games.
                   

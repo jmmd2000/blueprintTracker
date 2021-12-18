@@ -35,6 +35,10 @@ var GunSchema = new Schema({
     ref: 'Attachment',
     required: false
   }],
+  primary: {
+    type: Boolean,
+    required: true,
+  },
 
 
 });

@@ -1,7 +1,12 @@
 extends ../layout
 
 block content
-  h1(class="pageHeader") !{bp.title}
+  if bp.warzone == true
+    h1(class="pageHeader") !{bp.title}
+      sub(class="wzSubscript") Warzone
+  else
+    h1(class="pageHeader") !{bp.title}
+  
   img(src='/images/'+bp.weaponBase.image)
   
   p #[strong Description:   ] #{bp.description}

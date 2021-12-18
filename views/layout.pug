@@ -41,6 +41,40 @@ html(lang='en')
                 a(href='/tracker/attachmentCategory/create') New Attachment Category
               li 
                 a(href='/tracker/game/create') New Game
+              li(style="padding: .5rem 0 0 0;")
+                input(type='text' placeholder='Search here...' name='searchBar' id="searchBar")
+                button(type='button', onclick='var query = document.getElementById("searchBar").value;location.href = "/tracker/search/" + query;' id="searchButton") Search
+
+
+
+
+            div(class='sidebar-nav-mobile')
+              a(href='/tracker' class="homeButton") Home
+
+              div(class="allContainer")
+                button(class="allButton") All
+                  div(class="allLinks")
+                    a(href='/tracker/blueprints') All Blueprints
+                    a(href='/tracker/guns') All Guns
+                    a(href='/tracker/attachments') All Attachments
+                    a(href='/tracker/games') All Games
+
+              div(class="newContainer")
+                button(class="newButton") New
+                  div(class="newLinks")
+                    a(href='/tracker/blueprint/create') New Blueprint
+                    a(href='/tracker/gun/create') New Gun
+                    a(href='/tracker/attachment/create') New Attachment
+                    a(href='/tracker/attachmentCategory/create') New Attachment Category
+                    a(href='/tracker/weaponClass/create') New Weapon Class
+                    a(href='/tracker/game/create') New Game
+
+              br
+              input(type='text' placeholder='Search here...' name='searchBar' id="searchBar1")
+              button(type='button', onclick='var query = document.getElementById("searchBar1").value;location.href = "/tracker/search/" + query;' id="searchButton1") Search
+              
+
+              
                 
         div(class='col-md-10')
           block content
