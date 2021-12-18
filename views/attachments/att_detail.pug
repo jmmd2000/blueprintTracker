@@ -41,7 +41,9 @@ block content
       h5(class="subtitle") #[strong Compatible Guns:] 
 
       if guns.length > 0
-        p(class="subtitle") There are #{guns.length} guns that are compatible with this attachment
+        p(class="subtitle") There are 
+          span(class="yellow") #{guns.length} 
+        p guns that are compatible with this attachment
         
       else
         p(class="subtitle") There are no applicable guns
