@@ -15,7 +15,7 @@ block content
             tr
               th(colspan="2" class="bpTable_name") 
                 h4
-                  a(href=c.url style="color:yellow;") !{c.title}
+                  a(href=c.url) !{c.title}
             tr
               th(class="bpTable_heading") Weapon Name
               th(class="bpTable_heading") Description
@@ -24,7 +24,7 @@ block content
               if c._id.toString() == gun.weaponClass.toString()
                 tr 
                   td 
-                    a(href=gun.url style="color:yellow;") !{gun.title}
+                    a(href=gun.url style="color:white; font-weight:bold;") !{gun.title}
                   td !{gun.description}
 
             else

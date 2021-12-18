@@ -206,6 +206,7 @@ option {
 .bpTable_heading {
   text-align: left;
   text-decoration: underline;
+  color:yellow;
 }
 
 /*  
