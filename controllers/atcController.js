@@ -94,6 +94,7 @@ exports.atc_create_post = [
         var atc = new AttCat({
             title: req.body.atc_name,
             game: req.body.game_name,
+            secondary: req.body.sec,
         });
 
         if (!errors.isEmpty()) {
@@ -235,6 +236,7 @@ exports.atc_update_post = [
         var atc = new AttCat({
             title: req.body.atc_name,
             game: req.body.game_name,
+            secondary: req.body.sec,
             _id: req.params.id
         });
 

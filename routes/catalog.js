@@ -10,7 +10,8 @@ var game_controller = require('../controllers/gameController');
 var wc_controller = require('../controllers/weaponClassController');
 var atc_controller = require('../controllers/atcController');
 
-
+// Get request for search bar
+router.get('/search/:query', blueprint_controller.search);
 
 /// Gun ROUTES ///
 

@@ -184,6 +184,7 @@ exports.gun_create_post = [
       weaponClass: req.body.gun_class,
       image: req.body.gun_img,
       compatible: req.body.compatible,
+      primary: req.body.prisec
     });
 
     if (!errors.isEmpty()) {
@@ -402,6 +403,7 @@ exports.gun_update_post = [
       image: req.body.gun_img,
       compatible:
         typeof req.body.compatible === "undefined" ? [] : req.body.compatible,
+      primary: req.body.prisec,
       _id: req.params.id, // This is required, or a new ID will be assigned!
     });
 

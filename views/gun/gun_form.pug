@@ -15,6 +15,21 @@ block content
       label(for='gun_des') Gun Description:
       input#gun_des.form-control(type='text', placeholder='Description...' name='gun_des' required='false' value=(undefined===gun ? '' : gun.description) )
 
+    // Primary or Secondary
+    div.form-group
+      label(for='prisec') Gun Type:
+      select#prisec.form-control(type='select', placeholder='Gun Type...' name='prisec' required='true')
+        if gun
+          if gun.primary == true
+            option(value='true' selected) Primary
+            option(value='false') Secondary
+          else
+            option(value='true') Primary
+            option(value='false' selected) Secondary
+        else
+          option(value='true' selected) Primary
+          option(value='false') Secondary
+
     // Weapon Class
     div.form-group
       label(for='gun_class') Weapon Class:

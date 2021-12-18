@@ -26,8 +26,12 @@ block content
                 each bp in bps
                     if bp.weaponBase._id.toString() == gun._id.toString()
                       tr 
-                        td 
-                          a(href=bp.url) !{bp.title}
+                        td
+                          if bp.warzone == true
+                            a(href=bp.url) !{bp.title}
+                              sup(style="color:yellow;") WZ
+                          else
+                            a(href=bp.url) !{bp.title}
                         td 
                           a(href=gun.url) !{gun.title}
                         td !{bp.description}

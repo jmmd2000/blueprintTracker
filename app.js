@@ -11,7 +11,7 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://jd2000:jd2000@cluster0.2hoif.mongodb.net/blueprint_tracker?retryWrites=true&w=majority';
+var dev_db_url = 'mongodb+srv://jd2000:jd2000@cluster0.2hoif.mongodb.net/blueprint_tracker_test?retryWrites=true&w=majority';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;

@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  h1(class="pageHeader")= title
+
+  h3 Guns:
+  p(class="subtitle") There are !{guns.length} guns that fit this search criteria
+  ul
+   each gun in guns
+    li
+     a(href=gun.url) !{gun.title}
+
+
+  br
+  hr
+  br
+
+
+  h3 Blueprints:
+  p(class="subtitle") There are !{blueprints.length} blueprints that fit this search criteria
+  ul
+  each b in blueprints
+   li
+    a(href=b.url) !{b.title}
+
+
+  br
+  hr
+  br
+
+
+
+  h3 Attachments:
+  p(class="subtitle") There are !{atts.length} attachments that fit this search criteria
+  ul
+  each a in atts
+   li
+    a(href=a.url) !{a.title}

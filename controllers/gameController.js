@@ -234,31 +234,26 @@ exports.game_delete_post = function (req, res, next) {
 exports.game_update_get = function (req, res, next) {
   // Get book, authors and genres for form.
   async.parallel({
-      att: function (callback) {
-        Att.findById(req.params.id)
+      game: function (callback) {
+        Game.findById(req.params.id)
           .populate("title")
-          .populate("attachmentCategory")
           .exec(callback);
-      },
-      attcats: function (callback) {
-        AttCat.find(callback);
       },
     },
     function (err, results) {
       if (err) {
         return next(err);
       }
-      if (results.att == null) {
+      if (results.game == null) {
         // No results.
-        var err = new Error("Attachment not found");
+        var err = new Error("Game not found");
         err.status = 404;
         return next(err);
       }
       // Success.
-      res.render("attachments/new_attachment", {
-        title: "Update attachment",
-        att: results.att,
-        attcats: results.attcats,
+      res.render("games/new_game", {
+        title: "Update game",
+        game: results.game,
       });
     }
   );
@@ -266,16 +261,10 @@ exports.game_update_get = function (req, res, next) {
 
 // Handle Author update on POST.
 exports.game_update_post = [
-  (req, res, next) => {
-    if (!(req.body.att_cat instanceof Array)) {
-      if (typeof req.body.att_cat === "undefined") req.body.att_cat = [];
-      else req.body.att_cat = new Array(req.body.att_cat);
-    }
-    next();
-  },
+
 
   // Validate and sanitize fields.
-  body("att_name", "Attachment name must not be empty.")
+  body("game_name", "Game name must not be empty.")
   .trim()
   .isLength({
     min: 1
@@ -289,28 +278,27 @@ exports.game_update_post = [
 
     // Convert the genre to an array.
     // Create Author object with escaped and trimmed data
-    var att = new Att({
-      title: req.body.att_name,
-      attachmentCategory: req.body.att_cat,
+    var game = new Game({
+      title: req.body.game_name,
       _id: req.params.id
     });
 
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/errors messages.
-      res.render("new_attachment", {
-        title: "Add new attachment",
-        att_name: att_name,
+      res.render("games/new_game", {
+        title: "Update game",
+        game_name: game_name,
         errors: errors.array(),
       });
       return;
     } else {
       // Data from form is valid. Update the record.
-      Att.findByIdAndUpdate(req.params.id, att, {}, function (err, attt) {
+      Game.findByIdAndUpdate(req.params.id, game, {}, function (err, gamee) {
         if (err) {
           return next(err);
         }
         // Successful - redirect to attachment detail page.
-        res.redirect(attt.url);
+        res.redirect(gamee.url);
       });
     }
   },

@@ -1,15 +1,12 @@
 extends ../layout
 
 block content
-  if att
-    h1=title +": "+ !{game.title}
-  else
-    h1=title
+  h1=title
 
   form(method='POST' action='')
     div.form-group
       label(for='game_name') Game Name:
-      input#att_name.form-control(type='text', placeholder='Name of game...' name='game_name' required='true' value=(undefined===att ? '' : att.title) )
+      input#att_name.form-control(type='text', placeholder='Name of game...' name='game_name' required='true' value=(undefined===game ? '' : game.title) )
     button.btn.btn-secondary(type='submit') Submit
 
   if errors 

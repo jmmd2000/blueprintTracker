@@ -7,9 +7,11 @@ block content
     h1(class="pageHeader")=title
 
   form(method='POST' action='')
+
     div.form-group
       label(for='atc_name') Category Name:
       input#atc_name.form-control(type='text', placeholder='Name of category...' name='atc_name' required='true' value=(undefined===atc ? '' : atc.title) )
+
     div.form-group
       label(for='game_name') Game:
       select#game_name.form-control(type='select', placeholder='Select game...' name='game_name' required='true' )
@@ -18,6 +20,21 @@ block content
                   option(value=g._id selected=(atc.game._id.toString()===atc.game._id.toString() ? 'selected' : false) ) #{g.title}
               else
                   option(value=g._id) #{g.title}
+
+    div.form-group
+      label(for='sec') Secondary Weapon Specific? :
+      select#sec.form-control(type='select', placeholder='Secondary Weapon Specific?..' name='sec' required='true')
+        if atc
+          if atc.secondary == true
+            option(value='true' selected) True
+            option(value='false') False
+          else
+            option(value='true') True
+            option(value='false' selected) False
+        else
+          option(value='true' selected) True
+          option(value='false') False
+    
     button.btn.btn-secondary(type='submit') Submit
 
   if errors 

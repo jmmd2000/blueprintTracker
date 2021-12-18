@@ -12,7 +12,11 @@ var AttachmentCategorySchema = new Schema({
     type: Schema.ObjectId,
     ref: 'game',
     required: true
-}
+  },
+  secondary: {
+    type: Boolean,
+    required: true
+  }
 });
 
 // Virtual for this author instance URL.
