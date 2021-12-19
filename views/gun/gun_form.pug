@@ -46,6 +46,7 @@ block content
 
     div.form-group(class="checkboxContainer")
       each cat in cats
+       if gun
         if gun.primary == true
           if cat.secondary == false
             if cat.game._id.toString() == game._id.toString()
