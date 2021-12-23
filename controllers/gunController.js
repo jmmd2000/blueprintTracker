@@ -27,7 +27,7 @@ exports.gun_list = function (req, res, next) {
 
       games: function (callback) {
         Game.find()
-          .sort([["title", "ascending"]])
+          .sort([["title", "descending"]])
           .exec(callback);
       },
     },

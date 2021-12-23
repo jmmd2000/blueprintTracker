@@ -47,7 +47,8 @@ block content
                     td
                       each att in gun.compatible
                         if cat._id.toString() == att.attachmentCategory.toString()
-                          a(href=att.url style="display:inline;") !{att.title}, 
+                          a(href=att.url style="display:inline;") !{att.title} 
+                          p(style="color:yellow; display:inline;") • 
             else
               if cat.secondary == true
                 div(class='flexItem')
@@ -57,7 +58,8 @@ block content
                     td
                       each att in gun.compatible
                         if cat._id.toString() == att.attachmentCategory.toString()
-                          a(href=att.url style="display:inline;") !{att.title},
+                          a(href=att.url style="display:inline;") !{att.title} 
+                          p(style="color:yellow; display:inline;") • 
                           
   else
     p(class="subtitle") There are no compatible attachments
