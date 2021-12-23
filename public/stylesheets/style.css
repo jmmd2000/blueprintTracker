@@ -84,14 +84,25 @@ option {
 }
 
 .checkboxContainer {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: top;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .checkboxes {
   margin: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: left;
+  border: 1px solid black;
+}
+
+input[type="checkbox"]:checked + .checkboxLabel {
+  font-weight: 800;
+  color: yellow;
 }
 
 .checkboxContainer,
@@ -100,11 +111,11 @@ option {
 }
 
 .checkboxTitle {
-  border: 1px solid black;
   margin: 0.25rem;
   font-weight: bold;
   text-decoration: underline;
-  text-align: center;
+  text-align: left;
+  font-size: 1.5rem;
 }
 
 .gameItem {
@@ -407,6 +418,10 @@ img {
     width: 20%;
     font-size: 1rem;
     height: 2rem;
+  }
+
+  .checkboxLabel {
+  font-size: .75rem;
   }
 
   .gameItem {

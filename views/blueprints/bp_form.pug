@@ -35,7 +35,7 @@ block content
       each cat in cats
         if cat.game._id.toString() == gun.weaponClass.game._id.toString()
           label(class="checkboxTitle") !{cat.title}
-            div(class="checkboxes")
+          div(class="checkboxes")
            
               for att in gun.compatible
                 if cat._id.toString() == att.attachmentCategory.toString()
