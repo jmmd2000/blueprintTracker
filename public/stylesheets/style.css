@@ -156,7 +156,12 @@ input[type="checkbox"]:checked + .checkboxLabel {
 }
 
 .gunTable td:nth-child(1) {
-  width: 15%;
+  width: 25%;
+  text-align: center;
+}
+
+.gunTable td:nth-child(2) {
+  width: 20%;
   text-align: center;
 }
 
