@@ -13,11 +13,12 @@ block content
         if c.game._id.toString() == game._id.toString()
           table(class="gunTable")
             tr
-              th(colspan="2" class="bpTable_name") 
+              th(colspan="3" class="bpTable_name") 
                 h4
                   a(href=c.url) !{c.title}
             tr
               th(class="bpTable_heading") Weapon Name
+              th(class="bpTable_heading") Image
               th(class="bpTable_heading") Description
 
             each gun in guns
@@ -25,6 +26,8 @@ block content
                 tr 
                   td 
                     a(href=gun.url class="whiteBold") !{gun.title}
+                  td 
+                    img(src='/images/'+gun.image class="tableImage")
                   td !{gun.description}
 
             else

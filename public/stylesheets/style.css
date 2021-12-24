@@ -160,6 +160,10 @@ input[type="checkbox"]:checked + .checkboxLabel {
   text-align: center;
 }
 
+.gunTable td:nth-child(3) {
+  padding: 1rem;
+}
+
 .gunTable tr:nth-child(even) {
   background-color: var(--medAccent);
 }
@@ -171,6 +175,12 @@ input[type="checkbox"]:checked + .checkboxLabel {
 .gunTable_heading {
   text-align: left;
   text-decoration: underline;
+}
+
+.tableImage{
+  width: 100%;
+  height: auto;
+
 }
 
 /*  
@@ -439,5 +449,10 @@ img {
 
   img {
   width: 100%;
+  }
+
+  .tableImage{
+  width: 100%;
+  height: auto;
   }
 }
