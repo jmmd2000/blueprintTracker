@@ -11,6 +11,7 @@ block content
       table(class="gunTable")
             tr
               th(class="bpTable_heading") Weapon Name
+              th(class="bpTable_heading") Image
               th(class="bpTable_heading") Description
 
             each gun in guns
@@ -18,6 +19,8 @@ block content
                 tr 
                   td 
                     a(href=gun.url) !{gun.title}
+                  td 
+                    img(src='/images/'+gun.image class="tableImage")
                   td !{gun.description}
     else
       p(class="subtitle") There are no applicable guns

@@ -17,7 +17,7 @@ exports.wc_detail = function (req, res, next) {
       guns: function (callback) {
         Gun.find({
             'weaponClass': req.params.id
-          }, 'title weaponClass description')
+          }, 'title weaponClass description image')
           .exec(callback)
       },
       wc: function (callback) {
