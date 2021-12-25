@@ -22,6 +22,20 @@ block content
                   option(value=g._id) #{g.title}
 
     div.form-group
+      label(for='pri') Primary Weapon Specific? :
+      select#sec.form-control(type='select', placeholder='Secondary Weapon Specific?..' name='pri' required='true')
+        if atc
+          if atc.primary == true
+            option(value='true' selected) True
+            option(value='false') False
+          else
+            option(value='true') True
+            option(value='false' selected) False
+        else
+          option(value='true' selected) True
+          option(value='false') False
+
+    div.form-group
       label(for='sec') Secondary Weapon Specific? :
       select#sec.form-control(type='select', placeholder='Secondary Weapon Specific?..' name='sec' required='true')
         if atc
@@ -34,6 +48,7 @@ block content
         else
           option(value='true' selected) True
           option(value='false') False
+
     
     button.btn.btn-secondary(type='submit') Submit
 

@@ -67,7 +67,6 @@ exports.gun_detail = function (req, res, next) {
       },
       attcats: function (callback) {
         AttCat.find()
-          .sort([["title", "ascending"]])
           .exec(callback);
       },
     },

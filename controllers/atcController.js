@@ -95,6 +95,7 @@ exports.atc_create_post = [
             title: req.body.atc_name,
             game: req.body.game_name,
             secondary: req.body.sec,
+            primary: req.body.pri,
         });
 
         if (!errors.isEmpty()) {
@@ -237,6 +238,7 @@ exports.atc_update_post = [
             title: req.body.atc_name,
             game: req.body.game_name,
             secondary: req.body.sec,
+            primary: req.body.pri,
             _id: req.params.id
         });
 

@@ -16,7 +16,11 @@ var AttachmentCategorySchema = new Schema({
   secondary: {
     type: Boolean,
     required: true
-  }
+  },
+  primary: {
+    type: Boolean,
+    required: true
+  },
 });
 
 // Virtual for this author instance URL.

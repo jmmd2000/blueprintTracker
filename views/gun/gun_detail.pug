@@ -39,7 +39,7 @@ block content
         each cat in attcats
           if cat.game.toString() == gun.weaponClass.game.toString()
             if gun.primary == true
-              if cat.secondary == false
+              if cat.primary == true
                 div(class='flexItem')
                   tr
                     td

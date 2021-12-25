@@ -48,7 +48,7 @@ block content
       each cat in cats
        if gun
         if gun.primary == true
-          if cat.secondary == false
+          if cat.primary == true
             if cat.game._id.toString() == game._id.toString()
               label(class="checkboxTitle") !{cat.title}
               div(class="checkboxes")
@@ -70,6 +70,7 @@ block content
                           input.checkbox-input(type='checkbox', name="compatible", id=att._id, value=att._id)
                           label(for=att._id class="checkboxLabel") !{att.title}
         else
+          if cat.secondary == true
             if cat.game._id.toString() == game._id.toString()
               label(class="checkboxTitle") !{cat.title}
               div(class="checkboxes")
