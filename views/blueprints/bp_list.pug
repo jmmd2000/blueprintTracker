@@ -1,6 +1,24 @@
 extends ../layout
 
 block content
+  script.
+    $(document).ready(function () {
+
+        $(".bpTable").each(function() {
+          var rowCount = $("tbody tr", this).length;
+            if(rowCount <= 2){
+              $(this).css("display","none")
+            }
+      });
+
+
+
+      
+    });
+    
+    
+
+
   h1(class="pageHeader")= title
 
   each game in games
@@ -20,6 +38,7 @@ block content
               th(class="bpTable_heading") Blueprint Name
               th(class="bpTable_heading") Base Weapon
               th(class="bpTable_heading") Description
+        
 
             each gun in guns
               if c._id.toString() == gun.weaponClass.toString()

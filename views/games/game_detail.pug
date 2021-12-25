@@ -1,6 +1,21 @@
 extends ../layout
 
 block content
+  script.
+    $(document).ready(function () {
+
+        $(".bpTable").each(function() {
+          var rowCount = $("tbody tr", this).length;
+            if(rowCount <= 2){
+              $(this).css("display","none")
+            }
+      });
+
+
+
+      
+    });
+
   h1(class="pageHeader") !{game.title}
 
     // List of guns in the current game

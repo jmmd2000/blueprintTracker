@@ -259,6 +259,11 @@ input[type="checkbox"]:checked + .checkboxLabel {
   text-align: center;
 }
 
+.bpAttachment_table td:nth-child(1){
+  font-weight: bold;
+  background-color: var(--darkAccent);
+}
+
 .bpAttachment_table tr:nth-child(even) {
   background-color: var(--medAccent);
 }
@@ -459,5 +464,9 @@ img {
   .tableImage{
   width: 100%;
   height: auto;
+  }
+
+  .bpAttachment_table {
+  width: 90%;
   }
 }

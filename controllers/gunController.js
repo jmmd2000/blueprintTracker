@@ -20,7 +20,6 @@ exports.gun_list = function (req, res, next) {
 
       weaponClasses: function (callback) {
         WepClass.find()
-          .sort([["title", "ascending"]])
           .exec(callback);
       },
 
