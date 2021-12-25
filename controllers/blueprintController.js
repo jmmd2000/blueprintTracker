@@ -95,17 +95,14 @@ exports.bp_list = function (req, res, next) {
 
       weaponClasses: function (callback) {
         WepClass.find()
-          .sort([["title", "ascending"]])
           .exec(callback);
       },
       guns: function (callback) {
         Gun.find()
-          .sort([["title", "ascending"]])
           .exec(callback);
       },
       games: function (callback) {
         Game.find()
-          .sort([["title", "ascending"]])
           .exec(callback);
       },
     },
