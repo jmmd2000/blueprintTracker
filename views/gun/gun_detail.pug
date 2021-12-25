@@ -20,7 +20,7 @@ block content
       each blueprint in guns_blueprints
         tr 
           td 
-            a(href=blueprint.url) !{blueprint.title}
+            a(href=blueprint.url class="whiteBold") !{blueprint.title}
           td #{blueprint.description}
       else
         tr

@@ -34,7 +34,7 @@ block content
     div.form-group(class="checkboxContainer")
       each cat in cats
         if gun.primary == true
-          if cat.secondary == false
+          if cat.primary == true
             if cat.game._id.toString() == gun.weaponClass.game._id.toString()
               label(class="checkboxTitle") !{cat.title}
               div(class="checkboxes")
