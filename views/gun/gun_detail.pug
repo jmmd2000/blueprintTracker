@@ -3,7 +3,7 @@ extends ../layout
 block content
 
   h1(class="pageHeader") !{gun.title}
-  img(src='/images/'+gun.image)
+  img(src!='/images/'+gun.image)
   
   p #[strong Summary:] #{gun.description}
   

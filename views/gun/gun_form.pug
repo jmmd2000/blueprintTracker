@@ -95,7 +95,7 @@ block content
     // Gun Description
     div.form-group
       label(for='gun_img') Gun Image filename:
-      input#gun_img.form-control(type='text', placeholder='Image title...' name='gun_img' required='true' value=(undefined===gun ? '' : gun.image) )
+      input#gun_img.form-control(type='text', placeholder='Image title...' name='gun_img' required='true' value!=(undefined===gun ? '' : gun.image) )
 
 
     button.btn.btn-secondary(type='submit') Submit
